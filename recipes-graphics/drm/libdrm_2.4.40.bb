@@ -1,4 +1,4 @@
-require libdrm.inc
+require recipes-graphics/drm/libdrm.inc
 
 PR = "${INC_PR}.0"
 

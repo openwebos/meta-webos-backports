@@ -1,4 +1,4 @@
-require libdrm.inc
+require recipes-graphics/drm/libdrm.inc
 
 SRC_URI = "git://anongit.freedesktop.org/git/mesa/drm;protocol=git"
 
