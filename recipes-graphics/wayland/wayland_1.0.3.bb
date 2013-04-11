@@ -10,6 +10,8 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://COPYING;md5=1d4476a7d98dd5691c53d4d43a510c72 \
                     file://src/wayland-server.c;endline=21;md5=079ae21dbf98ada52ec23744851b0a5c"
 
+PR = "r1"
+
 SRC_URI = "http://wayland.freedesktop.org/releases/${BPN}-${PV}.tar.xz"
 SRC_URI[md5sum] = "eebe23571fd4f9ceacc583238e5a8ae9"
 SRC_URI[sha256sum] = "f6be5ee11ba534baaa116350b5efb874bf9963bf3fb18bcf40130317e83a5913"
@@ -19,8 +21,8 @@ inherit autotools pkgconfig
 # We need wayland-native for the wayland-scanner utility
 BBCLASSEXTEND = "native"
 
-DEPENDS_virtclass-native = "expat-native"
-DEPENDS = "expat wayland-native"
+DEPENDS_virtclass-native = "expat-native libffi-native"
+DEPENDS = "expat libffi wayland-native"
 
 EXTRA_OECONF_virtclass-native = "--disable-documentation"
 EXTRA_OECONF = "--disable-documentation --disable-scanner"
