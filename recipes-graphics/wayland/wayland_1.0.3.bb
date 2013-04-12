@@ -16,6 +16,8 @@ SRC_URI = "http://wayland.freedesktop.org/releases/${BPN}-${PV}.tar.xz"
 SRC_URI[md5sum] = "eebe23571fd4f9ceacc583238e5a8ae9"
 SRC_URI[sha256sum] = "f6be5ee11ba534baaa116350b5efb874bf9963bf3fb18bcf40130317e83a5913"
 
+SRC_URI_append_class-native = " file://just-scanner.patch"
+
 inherit autotools pkgconfig
 
 # We need wayland-native for the wayland-scanner utility
