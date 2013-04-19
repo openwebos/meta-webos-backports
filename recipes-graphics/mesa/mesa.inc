@@ -1,3 +1,5 @@
+# Copyright (c) 2013 LG Electronics, Inc.
+
 DEPENDS += "libdrm expat udev"
 X11_DEPS += "dri2proto"
 
@@ -20,7 +22,11 @@ python populate_packages_prepend() {
     dri_drivers_root = os.path.join(d.getVar('libdir', True), "dri")
     
     pkgs = ['mesa', 'mesa-dev', 'mesa-dbg']
-    pkgs += do_split_packages(d, dri_drivers_root, '^(.*)_dri\.so$', 'mesa-driver-%s', 'Mesa %s DRI driver', extra_depends='')
+    
+    # package.bbclass in our oe-core/danny release do not return list of created packages from do_split_packages
+    # but we also don't need to fix upgrade-path as mesa wasn't in webos builds before
+    # pkgs += do_split_packages(d, dri_drivers_root, '^(.*)_dri\.so$', 'mesa-driver-%s', 'Mesa %s DRI driver', extra_depends='')
+    do_split_packages(d, dri_drivers_root, '^(.*)_dri\.so$', 'mesa-driver-%s', 'Mesa %s DRI driver', extra_depends='')
     for pkg in pkgs:
         d.setVar("RPROVIDES_%s" % pkg, pkg.replace("mesa-", "mesa-dri-"))
         d.setVar("RCONFLICTS_%s" % pkg, pkg.replace("mesa-", "mesa-dri-"))
