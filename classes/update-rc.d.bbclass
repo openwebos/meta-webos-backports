@@ -1,3 +1,5 @@
+# Copyright (c) 2013 LG Electronics, Inc.
+
 UPDATERCPN ?= "${PN}"
 
 DEPENDS_append = " update-rc.d-native"
@@ -52,9 +54,7 @@ python __anonymous() {
     update_rc_after_parse(d)
 }
 
-PACKAGESPLITFUNCS_prepend = "populate_packages_updatercd "
-
-python populate_packages_updatercd () {
+python populate_packages_prepend () {
     def update_rcd_package(pkg):
         bb.debug(1, 'adding update-rc.d calls to postinst/postrm for %s' % pkg)
         """
