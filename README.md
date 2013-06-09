@@ -1,11 +1,13 @@
 # Summary
 
 This repository is collection of recipes and bbclasses we needed to backport
-from newer oe-core (dylan) to our build which is using older release (danny).
+from newer oe-core 1.5 (now master branch) to our build which is using older
+release 1.4 (dylan).
 
 The aim of this layer is to be able to just remove it from BBLAYERS when we
 upgrade oe-core instead of removing individual files from our other layers.
 
+If you're looking for backports from dylan to danny, check danny branch.
 
 # Copyright and License Information
 
